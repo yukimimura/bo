@@ -1,0 +1,16 @@
+<table>
+  <tbody>
+      <tr>
+        <td>タイトル：<%= @post.title %></td>
+        <td> /著者：<%= @post.author %></td>
+        <td> /内容：<%= @post.content %></td>
+        <td> /画像：<%= image_tag @post.image.url if @post.image? %></td>
+        <td>
+          /カテゴリー
+          <% @post.categories.each do |category| %>
+            <%= category.name %>
+          <% end %>
+        </td>
+      </tr>
+  </tbody>
+</table>

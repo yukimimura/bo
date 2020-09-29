@@ -1,0 +1,47 @@
+<section class="section mt-6">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-10">
+          <p class="is-size-1 has-text-weight-bold has-text-centered">レビューを自由に</p>
+          <br>
+          <div class="columns is-centered">
+            <div class="column is-3">
+              <%= link_to "ログイン", new_user_session_path, class: "button is-fullwidth" %>
+              <br>
+              <%= link_to "新規登録", new_user_registration_path, class: "button is-fullwidth" %>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<div class="row">
+  <div class="col-sm-6 offset-sm-3">
+    
+    <%= search_form_for @q, url:search_path do |f| %>
+    
+    
+    <div class="form-group">
+      <%= f.label :title_or_content_or_author, "フリーワード" %>
+      <%= f.search_field :title_or_content_or_author_cont, class: 'form-control', placeholder: "作品名、作者、キーワードで探す" %>
+    </div>
+    
+    
+    
+    <div class="mt-4">
+      <%= f.label :categories_id_eq, "カテゴリー" %>
+      <div class="custom-control custom-radio">
+        <%= f.radio_button :categories_id_eq, '', {:checked => true} %>指定なし
+        <%= f.collection_radio_buttons :categories_id_eq, @categories, :id, :name %>
+      </div>
+    </div>
+    
+    <div class="btn-lg">
+      <%= f.submit "検索", class: 'btn btn-outline-dark btn-block' %>
+    </div>
+    
+    <% end %>
+  </div>
+</div>
