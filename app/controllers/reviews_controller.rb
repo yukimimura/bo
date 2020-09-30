@@ -12,6 +12,7 @@ class ReviewsController < ApplicationController
       redirect_to post_path(@review.post)
     else
       @post = Post.find(params[:post_id])
+      @reviews = @post.reviews
       render "posts/show"
     end
   end
