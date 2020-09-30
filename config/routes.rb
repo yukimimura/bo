@@ -7,5 +7,7 @@ Rails.application.routes.draw do
   root to: 'toppages#index'
   get 'search', to: 'toppages#search'
   
-  resources :posts
+  resources :posts do
+    resources :reviews, only: [:index, :create]
+  end
 end
