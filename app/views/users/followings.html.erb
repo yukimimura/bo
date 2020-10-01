@@ -1,0 +1,5 @@
+<%= @user.username %>のフォロー中
+<% @followings.each do |following| %>
+    <%= link_to following.username, user_path(following.id) %>
+<% end %>
+フォロー数<%= @count_followings %>

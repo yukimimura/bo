@@ -34,4 +34,6 @@ class Post < ApplicationRecord
       0.0
     end
   end
+  
+  has_many :favorites, dependent: :destroy
 end

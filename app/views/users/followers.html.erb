@@ -1,0 +1,5 @@
+<%= @user.username %>のフォロワー
+<% @followers.each do |follower| %>
+    <%= link_to follower.username, user_path(follower.id) %>
+<% end %>
+フォロワー数<%= @count_followers %>
