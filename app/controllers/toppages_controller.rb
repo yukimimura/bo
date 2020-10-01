@@ -12,6 +12,7 @@ class ToppagesController < ApplicationController
   
   private
   def search_params
-    params.require(:q).permit(:title_or_content_or_author_cont, :categories_id_eq)
+    params.require(:q).permit!
+    #後で搭載する(:title_or_content_or_author_cont, :categories_id_eq)
   end
 end
