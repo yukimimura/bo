@@ -7,9 +7,6 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @review = Review.new
     @reviews = @post.reviews
-    
-      
-   
   end
   
   #params書く際にはcarrierwaveの５を参照必須

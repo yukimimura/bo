@@ -9,6 +9,9 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.user_id = current_user.id
     if @review.save
+      @post = Post.find(params[:post_id])
+      @post.average = @post.avg_score
+      @post.save
       redirect_to post_path(@review.post)
     else
       @post = Post.find(params[:post_id])
