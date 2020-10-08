@@ -4,13 +4,14 @@ class ApplicationController < ActionController::Base
   #privateいらないかも
   
   def counts(user)
-
     @count_followings = user.followings.count
     @count_followers = user.followers.count
+    @count_likes = user.favorites.count
+    @count_reviews = user.reviews.count
   end
 
   protected
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :image])
   end
 end

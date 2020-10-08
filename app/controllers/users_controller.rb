@@ -1,13 +1,10 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:show, :followings, :followers]
   
-  def index
-    @users = User.all
-  end
-
   def show
     @user = User.find(params[:id])
     counts(@user)
+    @reviews = @user.reviews.order(id: :desc).page(params[:page]).per(3)
   end
 
   def edit
@@ -26,19 +23,25 @@ class UsersController < ApplicationController
   
   def followings
     @user = User.find(params[:id])
-    @followings = @user.followings.page(params[:page])
+    @followings = @user.followings.page(params[:page]).per(10)
     counts(@user)
   end
   
   def followers
     @user = User.find(params[:id])
-    @followers = @user.followers.page(params[:page])
+    @followers = @user.followers.page(params[:page]).per(10)
     counts(@user)
+  end
+  
+  def likes
+    @user = User.find(params[:id])
+    counts(@user)
+    @posts = @user.myfavorites.order(id: :desc).page(params[:page]).per(5)
   end
   
   private
   
   def user_params
-    params.require(:user).permit(:username, :email)
+    params.require(:user).permit(:username, :email, :image)
   end
 end

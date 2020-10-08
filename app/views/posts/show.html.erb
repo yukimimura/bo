@@ -1,80 +1,103 @@
-<table>
-  <tbody>
-      <tr>
-        <td>タイトル：<%= @post.title %></td>
-        <td> /著者：<%= @post.author %></td>
-        <td> /内容：<%= @post.content %></td>
-        <td> /画像：<%= image_tag @post.image.url if @post.image? %></td>
-        <td>
-          /カテゴリー
-          <% @post.categories.each do |category| %>
-            <%= category.name %>
-          <% end %>
-        </td>
-      </tr>
-  </tbody>
-</table>
-
-<section class="section mt-6">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-5">
-        <div class="card mb-6">
-          <header class="card-header">
-            <p class="card-header-title">
-              <%= @post.title %>
-            </p>
-          </header>
-          <div class="card-content">
-            <div class="content average-score">
-              <div class="star-rating mb-2">
-                <div class="star-rating-front" style="width: <%= @post.review_score_percentage %>%">★★★★★</div>
-                <div class="star-rating-back">★★★★★</div>
-              </div>
-              <div class="average-score-display ml-3 pt-2">
-                <%= @post.avg_score %>点（<%= @post.reviews.count %>件のレビュー）
-              </div>
+<div class="columns is-centered">
+  <div class="column is-8">
+    <article class="media">
+      <figure class="media-left">
+        <img class="" width="250" height="250" src="<%= @post.image.url if @post.image? %>">
+      </figure>
+      <div class="media-content">
+        <div class="content">
+          <p>
+            <strong class="is-size-5"><%= @post.title %></strong> 
+            <br>
+            作者：<%= @post.author %>
+            <br>
+            <% @post.categories.each do |category| %>
+              ジャンル：<%= category.name %>
+            <% end %>
+            <br>
+            <% if user_signed_in? %>
+              <% if current_user.already_favorited?(@post) %>
+                <%= link_to post_favorites_path(@post), method: :delete do %>
+                  <i class="fas fa-heart" style="color: red;"></i>
+                <% end %>
+                <span style="color: red;"><%= @post.favorites.count %></span>
+              <% else %>
+                <%= link_to post_favorites_path(@post), method: :post do %>
+                  <i class="far fa-heart"></i>
+                <% end %>
+                <%= @post.favorites.count %>
+              <% end %>
+            <% else %>
+              <%= link_to new_user_session_path, data: { confirm: 'この機能はログインが必要です。'} do %>
+                  <i class="far fa-heart"></i>
+                <% end %>
+              <%= @post.favorites.count %>
+            <% end %>
+            <div class="mt-5">
+              <%= @post.content %>
             </div>
+          </p>
+        </div>
+      </div>
+    </article>
+  </div>
+</div>
+
+<div class="columns is-centered">
+  <div class="column is-5">
+    <div class="card mb-6">
+      <header class="card-header">
+        <p class="card-header-title">
+          <%= @post.title %>
+        </p>
+      </header>
+      <div class="card-content">
+        <div class="content average-score">
+          <div class="star-rating mb-2">
+            <div class="star-rating-front" style="width: <%= @post.review_score_percentage %>%">★★★★★</div>
+            <div class="star-rating-back">★★★★★</div>
+          </div>
+          <div class="average-score-display ml-3 pt-2">
+            <%= @post.avg_score %>点（<%= @post.reviews.count %>件のレビュー）
           </div>
         </div>
-        <%= render 'reviews/form', review: @review, post: @post %>
       </div>
     </div>
+    <%= render 'reviews/form', review: @review, post: @post %>
   </div>
-</section>
-
-<table class="table is-fullwidth has-text-centered">
-  <thead>
-    <tr>
-      <th>ユーザー</th><th>点数</th><th>内容</th>
-    </tr>
-  </thead>
-  <tbody>
+</div>
+  
+<div class="columns is-centered">
+  <div class="column is-7">
     <% @reviews.each do |review| %>
-      <tr>
-        <td><%= link_to review.user.username, user_path(review.user.id) %></td>
-        <td><%= review.score %></td>
-        <td><%= review.content %></td>
-      </tr>
+      <article class="message is-dark">
+        <div class="message-body">
+          <%= link_to review.user.username, user_path(review.user.id), class: 'is-size-6 has-text-weight-bold ml-1 mr-2' %>
+          <%= review.updated_at.strftime("%Y-%m-%d %H:%M") %>
+          <br>
+          <% f = review.score * 20 %>
+            <div class="star-rating mb-2">
+              <div class="star-rating-front " style="width: <%= f %>%">★★★★★</div>
+              <div class="star-rating-back">★★★★★</div>
+            </div>
+          <br>
+         <%= review.content %>
+        </div>
+      </article>
     <% end %>
-  </tbody>
-</table>
+  </div>
+</div>
 
-<% if user_signed_in? %>
-  <% if current_user.already_favorited?(@post) %>
-    <%= link_to post_favorites_path(@post), method: :delete do %>
-      <i class="fas fa-heart"></i>
-    <% end %>
-  <% else %>
-    <%= link_to post_favorites_path(@post), method: :post do %>
-      <i class="far fa-heart"></i>
-    <% end %>
-  <% end %>
-  <%= @post.favorites.count %>
+<% if @reviews.count < 10 %>
+  <div class="pt-5 columns is-centered">
+    <div class="column is-3">
+      <%= paginate @reviews %>
+    </div>
+  </div>
 <% else %>
-  <%= link_to new_user_session_path, data: { confirm: 'この機能はログインが必要です。'} do %>
-      <i class="far fa-heart"></i>
-    <% end %>
-  <%= @post.favorites.count %>
+  <div class="pt-5 columns is-centered">
+    <div class="column is-5">
+      <%= paginate @reviews %>
+    </div>
+  </div>
 <% end %>
-

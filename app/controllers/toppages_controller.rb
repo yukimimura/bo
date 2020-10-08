@@ -12,7 +12,7 @@ class ToppagesController < ApplicationController
   
   private
   def search_params
-    params.require(:q).permit(:title_or_content_or_author_cont, :average_gteq, :average_lt, :categories_id_eq)
-    #後で搭載する(:title_or_content_or_author_cont, :categories_id_eq)
+    params.require(:q).permit(:title_or_content_or_author_cont, :average_gteq, :categories_id_eq)
+    #:average_lt,追加しても良い
   end
 end

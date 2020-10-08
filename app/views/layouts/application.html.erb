@@ -4,10 +4,12 @@
     <title>Find Book</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://kit.fontawesome.com/83a4489301.js" crossorigin="anonymous"></script>
+    
   </head>
 
   <body>
@@ -16,6 +18,15 @@
     
     <%= render 'layouts/flash_messages' %>
     
-    <%= yield %>
+    <section class="section mt-5">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-10">
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+    </section>
+    
   </body>
 </html>

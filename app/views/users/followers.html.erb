@@ -1,5 +1,70 @@
-<%= @user.username %>のフォロワー
+<div class="columns is-centered">
+  <div class="column is-7">
+    <div class="has-text-centered">
+      <% if @user.image? %>
+        <img class="" width="200" height="200" src="<%= @user.image.url %>" >
+      <% else %>
+        <%= image_tag "/assets/default.jpg", :size => '200x200' %>
+      <% end %>
+    </div>
+    
+    <p class="is-size-1 has-text-weight-bold has-text-centered"><%= @user.username %></p>
+    
+    <% if current_user == @user %>
+      <p class="has-text-centered"><%= @user.email %></p>
+    <% else %>
+      <div class="has-text-centered mt-3">
+        <%= render 'relationships/follow_button', user: @user %>
+      </div>
+    <% end %>
+
+    <div class="has-text-centered mt-3">
+      <% if current_user == @user %>
+        <button class="button">
+          <%= link_to edit_user_path(@user) do %>
+            <span class="icon">
+              <i class="fas fa-user-edit"></i>
+            </span>
+            <span>編集</span>
+          <% end %>
+        </button>
+      <% end %>
+    </div>
+
+    <div class="tabs is-centered mt-5">
+      <ul>
+        <li class="has-text-weight-bold"><a href="<%= user_path(@user) %>" >レビュー</a></li>
+        <li class="has-text-weight-bold"><a href="<%= followings_user_path(@user) %>">フォロー</a></li>
+        <li class="is-active has-text-weight-bold"><a href="<%= followers_user_path(@user) %>">フォロワー</a></li>
+        <li class="has-text-weight-bold"><a href="<%= likes_user_path(@user) %>">お気に入り</a></li>
+      </ul>
+    </div>
+    
+    <div class="has-text-centered">
+      <div>
+        <p class="heading is-active">followers</p>
+        <p class="title"><%= @count_followers %></p>
+      </div>
+    </div>
+   
+  </div>
+</div>
+
 <% @followers.each do |follower| %>
-    <%= link_to follower.username, user_path(follower.id) %>
+<div class="con mb-5">
+  <div class="item1 mr-3">
+    <% if follower.image? %>
+      <img class="" width="64" height="64" src="<%= follower.image.url %>" >
+    <% else %>
+      <%= image_tag "/assets/default.jpg", :size => '64x64' %> <!--←sizeはいらない-->
+    <% end %>
+  </div>
+  <div class="item2">
+    <p class="has-text-weight-bold mb-1 "><%= link_to follower.username, user_path(follower.id) %></p>
+    <p><%= render 'relationships/follow_button', user: follower %></p>
+  </div>
+</div>
 <% end %>
-フォロワー数<%= @count_followers %>
+<div class="pagenate">
+  <%= paginate @followers %>
+</div>

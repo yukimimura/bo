@@ -37,3 +37,34 @@ a {
 a:hover {
     color: #ff0000;
 }
+
+/* Navigation */
+.topnav {
+   
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 64px;
+}
+
+.parent {
+    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+
+.topnav a {
+  text-align: center;
+  text-decoration: none;
+}
+
+/* */
+.con {
+  display: flex;
+  width: 230px;
+  margin : 0 auto;
+}
+

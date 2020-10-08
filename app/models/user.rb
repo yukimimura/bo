@@ -29,9 +29,12 @@ class User < ApplicationRecord
   end
   
   has_many :favorites, dependent: :destroy
+  has_many :myfavorites, through: :favorites, source: :post
   
   def already_favorited?(post)
     self.favorites.exists?(post_id: post.id)
   end
+  
+  mount_uploader :image, ImageUploader
   
 end

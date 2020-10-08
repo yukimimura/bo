@@ -5,7 +5,7 @@
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
           <div class="field">
-            <%= f.label :username %>
+            <%= f.label :username, "Username", class: 'label' %>
             <p class="control has-icons-left">
               <%= f.text_field :username, autofocus: true, :placeholder => "username", class: "input" %>
               <span class="icon is-small is-left">
@@ -14,7 +14,7 @@
             </p>
           </div>
           <div class="field">
-            <%= f.label :email %>
+            <%= f.label :email, "Email", class: 'label' %>
             <p class="control has-icons-left">
               <%= f.email_field :email, autofocus: true, autocomplete: "email", :placeholder => "email", class: "input" %>
               <span class="icon is-small is-left">
@@ -23,9 +23,9 @@
             </p>
           </div>
           <div class="field">
-            <%= f.label :password %>
+            <%= f.label :password, "Password", class: 'label' %>
             <% if @minimum_password_length %>
-            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <em>(<%= @minimum_password_length %>文字以上)</em>
             <% end %>
             <p class="control has-icons-left">
             <%= f.password_field :password, autocomplete: "new-password", :placeholder => "password", class: "input" %>
@@ -35,7 +35,7 @@
             </p>
           </div>
           <div class="field">
-            <%= f.label :password_confirmation %>
+            <%= f.label :password_confirmation, "Password(確認用)", class: 'label' %>
             <p class="control has-icons-left">
               <%= f.password_field :password_confirmation, autocomplete: "new-password", :placeholder => "password confirmation", class: "input" %>
               <span class="icon is-small is-left">
@@ -43,11 +43,19 @@
               </span>
             </p>
           </div>
-          <div class="actions">
-            <%= f.submit "Sign up", class: "button is-success" %>
+          
+          <div class="columns is-centered mt-3">
+            <div class="column is-6">
+              <%= button_tag(type: 'submit', class: 'button is-info is-rounded is-fullwidth') do %>
+                <span class="icon">
+                  <i class="fas fa-pen-square"></i>
+                </span>
+                <span>新規登録</span>
+              <% end %>
+            </div>
           </div>
+          
         <% end %>
-        <%= render "devise/shared/links" %>
       </div>
     </div>
   </div>

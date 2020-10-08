@@ -1,17 +1,22 @@
-<div class="row">
-  <div class="col-sm-6 offset-sm-3">
-    <h5 class="mb-5 text-center	">検索結果</h5>
-    
+<p class="is-size-1 has-text-weight-bold has-text-centered" id="">検索結果</p>
+<br>
+
+<div class="columns is-centered">
+  <div class="column is-6">
     <% @posts.each do |post| %>
+    
       <div class="media mb-3">
-        <img class="mr-4 rounded" width="150" height="150" src="<%= post.image.url if post.image? %>" alt="">
+        
+        <%= link_to post_path(post) do %>
+          <img class="mr-4 rounded" width="150" height="150" src="<%= post.image.url if post.image? %>" alt="">
+        <% end %>
+        
         <div class="media-body">
-          <h5 class="mt-0"><%= link_to post.title, post_path(post) %></h5>
+          <p class="is-size-5 has-text-weight-bold"><%= link_to post.title, post_path(post) %></p>
           <p><%= post.author %></p>
           <% post.categories.each do |category| %>
             <p><%= category.name %></p>
           <% end %>
-          <p class=""><%= post.content %></p>
           
           <div class="content average-score">
             <div class="star-rating mb-2">
@@ -23,6 +28,7 @@
             </div>
           </div>
           
+          <p class=""><%= post.content %></p>
         </div>
       </div>
     <% end %>

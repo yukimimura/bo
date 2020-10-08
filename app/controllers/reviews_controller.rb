@@ -1,9 +1,5 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!, only: [:create]
-  def index
-    @post = Post.find(params[:post_id])
-    @reviews = @post.reviews
-  end
 
   def create
     @review = Review.new(review_params)
@@ -15,7 +11,7 @@ class ReviewsController < ApplicationController
       redirect_to post_path(@review.post)
     else
       @post = Post.find(params[:post_id])
-      @reviews = @post.reviews
+      @reviews = @post.reviews.order(id: :desc).page(params[:page]).per(3)
       render "posts/show"
     end
   end
