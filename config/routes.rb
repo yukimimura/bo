@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'wikis', to: 'wikis#search'
+  # 後で消しておく↑
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   
   root to: 'toppages#index'

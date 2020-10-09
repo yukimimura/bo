@@ -1,36 +1,38 @@
 <p class="is-size-1 has-text-weight-bold has-text-centered" id="">検索結果</p>
 <br>
 
-<div class="columns is-centered">
-  <div class="column is-6">
-    <% @posts.each do |post| %>
-    
-      <div class="media mb-3">
-        
-        <%= link_to post_path(post) do %>
-          <img class="mr-4 rounded" width="150" height="150" src="<%= post.image.url if post.image? %>" alt="">
-        <% end %>
-        
-        <div class="media-body">
-          <p class="is-size-5 has-text-weight-bold"><%= link_to post.title, post_path(post) %></p>
-          <p><%= post.author %></p>
-          <% post.categories.each do |category| %>
-            <p><%= category.name %></p>
-          <% end %>
-          
-          <div class="content average-score">
-            <div class="star-rating mb-2">
-              <div class="star-rating-front" style="width: <%= post.review_score_percentage %>%">★★★★★</div>
-              <div class="star-rating-back">★★★★★</div>
-            </div>
-            <div class="average-score-display ml-3 pt-2">
-              <%= post.avg_score %>点（<%= post.reviews.count %>件のレビュー）
-            </div>
-          </div>
-          
-          <p class=""><%= post.content %></p>
-        </div>
-      </div>
+
+
+
+<% @posts.each do |post| %>
+<div class="con2 mb-5 pb-5">
+  <div class="item1 mr-3 ml-5">
+    <%= link_to post_path(post) do %>
+      <img class="mr-4" width="150" height="240" src="<%= post.image.url if post.image? %>" alt="">
     <% end %>
   </div>
+  <div class="item2">
+    <p class="is-size-5 has-text-weight-bold"><%= link_to post.title, post_path(post) %></p>
+    <p><%= post.author %></p>
+    <% post.categories.each do |category| %>
+      <p><%= category.name %></p>
+    <% end %>
+    
+    <div class="content average-score">
+      <div class="star-rating mb-2">
+        <div class="star-rating-front" style="width: <%= post.review_score_percentage %>%">★★★★★</div>
+        <div class="star-rating-back">★★★★★</div>
+      </div>
+      <div class="average-score-display ml-3 pt-2">
+        <%= post.avg_score %>点（<%= post.reviews.count %>件のレビュー）
+      </div>
+    </div>
+    
+    <p class="post-content"><%= post.content %></p>
+  </div>
+</div>
+<% end %>
+
+<div class="pagenate">
+  <%= paginate @posts %>
 </div>
