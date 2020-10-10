@@ -1,8 +1,19 @@
-<p class="is-size-1 has-text-weight-bold has-text-centered" id="">検索結果</p>
+<p class="is-size-3 has-text-weight-bold has-text-centered" id="">検索結果 : <%= @search_count.count %>件</p>
 <br>
 
+<% if @search_count.count == 0 %>
+  <p class="has-text-centered mt-5">
+    該当する作品が見つかりませんでした。<br>
+    条件を変更して再検索してください。
+  </p>
+  <%= link_to :back do %>
+    <div class="re">
+      <button class="button is-info is-rounded mt-5">再検索</button>
+    </div>
+  <% end %>
+<% end %>
 
-
+<%= sort_link(@q, :average, "title") %>
 
 <% @posts.each do |post| %>
 <div class="con2 mb-5 pb-5">
@@ -24,15 +35,17 @@
         <div class="star-rating-back">★★★★★</div>
       </div>
       <div class="average-score-display ml-3 pt-2">
-        <%= post.avg_score %>点（<%= post.reviews.count %>件のレビュー）
+        <%= post.avg_score %>点（<%= post.reviews.count %>件）
       </div>
     </div>
     
-    <p class="post-content"><%= post.content %></p>
+    <p class="post-content unchi"><%= post.content %></p>
   </div>
 </div>
 <% end %>
 
-<div class="pagenate">
-  <%= paginate @posts %>
-</div>
+<nav class="pagination is-rounded mt-5" role="navigation" aria-label="pagination">
+<%= paginate @posts %>
+</naV>
+
+

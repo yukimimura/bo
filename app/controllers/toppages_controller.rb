@@ -8,6 +8,8 @@ class ToppagesController < ApplicationController
   def search
     @q = Post.search(search_params)
     @posts = @q.result.includes(:categories).order(id: :desc).page(params[:page]).per(5)
+    
+    @search_count = @q.result.includes(:categories)
   end
   
   private

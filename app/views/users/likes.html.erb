@@ -104,16 +104,6 @@
   </div>
 </div>
 
-<% if @posts.count < 10 %>
-  <div class="pt-5 columns is-centered">
-    <div class="column is-3">
-      <%= paginate @posts %>
-    </div>
-  </div>
-<% else %>
-  <div class="pt-5 columns is-centered">
-    <div class="column is-3">
-      <%= paginate @posts %>
-    </div>
-  </div>
-<% end %>
+<nav class="pagination is-centered is-rounded mt-5" role="navigation" aria-label="pagination">
+<%= paginate @posts %>
+</naV>

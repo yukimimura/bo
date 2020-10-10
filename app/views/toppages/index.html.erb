@@ -1,4 +1,4 @@
-<p class="is-size-1 has-text-weight-bold has-text-centered" id="">本を検索しましょう</p>
+<p class="is-size-2 has-text-weight-bold has-text-centered" id="">本を検索しましょう</p>
 <br>
 
   <div class="columns is-centered">
@@ -30,9 +30,11 @@
         
       <div class="mt-4">
         <%= f.label :categories_id_eq, "カテゴリー", class: 'label mt-4' %>
-        <div class="control">
-          <%= f.radio_button :categories_id_eq, '', {:checked => true} %>指定なし
-          <%= f.collection_radio_buttons :categories_id_eq, @categories, :id, :name %>
+        <div class="">
+          <p><%= f.radio_button :categories_id_eq, '', {:checked => true} %> 指定なし</p>
+          <div class="">
+            <%= f.collection_radio_buttons :categories_id_eq, @categories, :id, :name, class: '' %>
+          </div>
         </div>
       </div>
         

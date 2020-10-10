@@ -66,6 +66,8 @@ a:hover {
   display: flex;
   width: 230px;
   margin : 0 auto;
+  border-bottom: solid #EEEEEE;
+  padding-bottom: 8px;
 }
 
 .con2 {
@@ -79,4 +81,10 @@ a:hover {
   width: 300px;
 }
 
+.pagination {
+  margin : 0 auto;
+}
 
+.re {
+  text-align: center,
+}
