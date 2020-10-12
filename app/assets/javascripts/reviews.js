@@ -51,3 +51,4 @@ for(let i=0; i<stars.length; i++){
 		}
 	})
 }
+

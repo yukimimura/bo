@@ -36,4 +36,7 @@ class Post < ApplicationRecord
   end
   
   has_many :favorites, dependent: :destroy
+  # 下記のは場合によってはいらない
+  has_many :favs, through: :favorites, source: :user
+  
 end

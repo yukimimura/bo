@@ -1,21 +1,6 @@
 <p class="is-size-3 has-text-weight-bold has-text-centered">検索結果 : <%= @search_count.count %>件</p>
 <br>
 
-<% if @search_count.count == 0 %>
-  <p class="has-text-centered mt-5">
-    該当する作品が見つかりませんでした。<br>
-    条件を変更して再検索してください。
-  </p>
-  <%= link_to :back do %>
-    <div class="re">
-      <button class="button is-info is-rounded mt-5">再検索</button>
-    </div>
-  <% end %>
-<% end %>
-
-
-
-
 <p class="is-size-５ has-text-centered">並び替え：</p>
 <div class="buttons has-addons is-centered mb-5">
   <%= search_form_for @q, url:review_sort_path do |f| %>
@@ -59,7 +44,7 @@
         <%= post.avg_score %>点（<%= post.reviews.count %>件）
       </div>
     </div>
-   
+    
     <p class="post-content unchi"><%= post.content %></p>
   </div>
 </div>

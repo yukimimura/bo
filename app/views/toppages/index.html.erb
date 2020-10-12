@@ -19,8 +19,7 @@
         <%= f.label :average, "評価", class: 'label mt-4' %>
         <div class="control has-icons-left">
           <div class="select">
-            <%= f.select :average_gteq, [1, 2, 3, 4, 5], {include_blank: '指定なし'}, class: '' %> 
-            <!--<%= f.select :average_lt, [1, 2, 3, 4, 5], {include_blank: '指定なし'}, class: 'mt-2 mb-2' %> -->
+            <%= f.select :average_gteq, {'１以上': 1, '２以上': 2, '３以上': 3, '４以上': 4, '５以上': 5}, {include_blank: '指定なし'}, class: '' %> 
           </div>
           <div class="icon is-small is-left">
             <i class="fas fa-star" style="color: #ffcc33;"></i>
@@ -52,7 +51,27 @@
       <% end %>
     </div>
   </div>
-  
-  
 
-  
+<div class="container" id="app">
+  <div class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+      <!-- Any other Bulma elements you want -->
+      <table>
+        <tr>
+          <td>Jhon</td>
+          <td>Hi</td>
+        </tr>
+      </table>
+      <input type="text" class="input" />
+    </div>
+    <button class="modal-close"></button>
+  </div
+  <textarea style="position:absolute;z-index: 9999" name="" id="" cols="30" rows="2"></textarea>
+  <br /><br /><br />
+  <p>
+    <button class="button" id="showModal">Show</button>
+  </p>
+</div>
+
+<%= javascript_include_tag 'reviews.js' %>
