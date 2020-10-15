@@ -1,5 +1,5 @@
 <div class="columns is-centered">
-  <div class="column is-8">
+  <div class="column is-6">
     <article class="media">
       <figure class="media-left">
         <img class="" width="250" height="250" src="<%= @post.image.url if @post.image? %>">
@@ -15,6 +15,7 @@
               ジャンル：<%= category.name %>
             <% end %>
             <br>
+            お気に入り：
             <% if user_signed_in? %>
               <% if current_user.already_favorited?(@post) %>
                 <%= link_to post_favorites_path(@post), method: :delete do %>
@@ -34,8 +35,12 @@
               <%= @post.favorites.count %>
             <% end %>
             <div class="mt-5">
+              <p>【あらすじ】</p>
               <%= @post.content %>
             </div>
+            <br>
+            <a href="" class="amazon mt-1" >Amazonで詳細を見る</a>
+            <a href="" class="rakuten mt-1">楽天で詳細を見る</a>
           </p>
         </div>
       </div>
@@ -43,6 +48,7 @@
   </div>
 </div>
 
+<br>
 <div class="columns is-centered">
   <div class="column is-5">
     <div class="card mb-6">
@@ -90,4 +96,6 @@
 
 <nav class="pagination is-rounded mt-5" role="navigation" aria-label="pagination">
 <%= paginate @reviews %>
-</naV>
+</nav>
+
+

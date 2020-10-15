@@ -13,30 +13,29 @@
   <% end %>
 <% end %>
 
-
-
-
-<p class="is-size-５ has-text-centered">並び替え：</p>
-<div class="buttons has-addons is-centered mb-5">
-  <%= search_form_for @q, url:review_sort_path do |f| %>
-    <%= f.hidden_field :title_or_content_or_author_cont %>
-    <%= f.hidden_field :average_gteq %> 
-    <%= f.hidden_field :categories_id_eq %>
-    <%= f.submit 'レビュー評価順', class: 'button is-text' %>
-  <% end %>
-  
-  <%= search_form_for @q, url:fav_sort_path do |f| %>
-    <%= f.hidden_field :title_or_content_or_author_cont %>
-    <%= f.hidden_field :average_gteq %> 
-    <%= f.hidden_field :categories_id_eq %>
-    <%= f.submit 'お気に入り数順', class: 'button is-text' %>
-  <% end %>
-</div>
-<br>
+<% unless @search_count.count == 0 %>
+  <p class="is-size-５ has-text-centered">並び替え：</p>
+  <div class="buttons has-addons is-centered mb-5">
+    <%= search_form_for @q, url:review_sort_path do |f| %>
+      <%= f.hidden_field :title_or_content_or_author_cont %>
+      <%= f.hidden_field :average_gteq %> 
+      <%= f.hidden_field :categories_id_eq %>
+      <%= f.submit 'レビュー評価順', class: 'button is-text' %>
+    <% end %>
+    
+    <%= search_form_for @q, url:fav_sort_path do |f| %>
+      <%= f.hidden_field :title_or_content_or_author_cont %>
+      <%= f.hidden_field :average_gteq %> 
+      <%= f.hidden_field :categories_id_eq %>
+      <%= f.submit 'お気に入り数順', class: 'button is-text' %>
+    <% end %>
+  </div>
+  <br>
+<% end %>
 
 <% @posts.each do |post| %>
 <div class="con2 mb-5 pb-5">
-  <div class="item1 mr-3 ml-5">
+  <div class="item1 mr-3">
     <%= link_to post_path(post) do %>
       <img class="mr-4" width="150" height="240" src="<%= post.image.url if post.image? %>" alt="">
     <% end %>
@@ -60,11 +59,11 @@
       </div>
     </div>
    
-    <p class="post-content unchi"><%= post.content %></p>
+    <p class="post-content"><%= post.content %></p>
   </div>
 </div>
 <% end %>
 
 <nav class="pagination is-rounded mt-5" role="navigation" aria-label="pagination">
 <%= paginate @posts %>
-</naV>
+</nav>

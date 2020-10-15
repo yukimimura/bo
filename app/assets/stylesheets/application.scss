@@ -17,7 +17,6 @@
 @import "bulma";
 
 body {
-  min-height: 100vh;
   font-family: sans-serif;
 }
 
@@ -72,13 +71,24 @@ a:hover {
 
 .con2 {
   display: flex;
-  width: 600px;
+  width: 450px;
   margin : 0 auto;
   border-bottom: solid #EEEEEE;
+  
 }
 
 .post-content {
-  width: 300px;
+  width: 280px;
+  height: 75px;
+  overflow: hidden;
+  position: relative;
+}
+
+.post-content:after {
+  content: "...";
+  position: absolute;
+  top: 50px;
+  left: 270px;
 }
 
 .pagination {
@@ -87,4 +97,45 @@ a:hover {
 
 .re {
   text-align: center,
+}
+
+.amazon {
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: #fd9927;
+  border: solid 2px #fd9927;
+  border-radius: 3px;
+  transition: .4s;
+  font-size: 13px;
+}
+
+.amazon:hover {
+  background: #fd9927;
+  color: white;
+}
+
+.rakuten {
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: #be0712;
+  border: solid 2px #be0712;
+  border-radius: 3px;
+  transition: .4s;
+  font-size: 13px;
+}
+
+.rakuten:hover {
+  background: #be0712;
+  color: white;
+}
+
+.mam {
+  padding-left: 70px;
+}
+
+.mam img {
+  width: 150px;
+  height: 235px;
 }

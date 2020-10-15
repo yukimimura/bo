@@ -50,60 +50,54 @@
   </div>
 </div>
 
-
-<div class="columns is-centered">
-  <div class="column is-6">
-    <% @posts.each do |post| %>
+<% @posts.each do |post| %>
+<div class="con2 mb-5 pb-5">
+  <div class="item1 mr-3">
+    <%= link_to post_path(post) do %>
+      <img class="mr-4" width="150" height="240" src="<%= post.image.url if post.image? %>" alt="">
+    <% end %>
+  </div>
+  
+  <div class="item2">
     
-      <div class="media mb-3">
-        
-        <%= link_to post_path(post) do %>
-          <img class="mr-4 rounded" width="150" height="150" src="<%= post.image.url if post.image? %>" alt="">
-        <% end %>
-        
-        <div class="media-body">
-          <p class="is-size-5 has-text-weight-bold"><%= link_to post.title, post_path(post) %></p>
-          <p><%= post.author %></p>
-          <% post.categories.each do |category| %>
-            <p><%= category.name %></p>
-          <% end %>
-          
-          <div class="content average-score">
-            <div class="star-rating mb-2">
-              <div class="star-rating-front" style="width: <%= post.review_score_percentage %>%">★★★★★</div>
-              <div class="star-rating-back">★★★★★</div>
-            </div>
-            <div class="average-score-display ml-3 pt-2">
-              <%= post.avg_score %>点（<%= post.reviews.count %>件のレビュー）
-            </div>
-          </div>
-          
-          <p class="">
-            <% if user_signed_in? %>
-              <% if current_user.already_favorited?(post) %>
-                <%= link_to post_favorites_path(post), method: :delete do %>
-                  <i class="fas fa-heart" style="color: red;"></i>
-                <% end %>
-                <span style="color: red;"><%= post.favorites.count %></span>
-              <% else %>
-                <%= link_to post_favorites_path(post), method: :post do %>
-                  <i class="far fa-heart"></i>
-                <% end %>
-                <%= post.favorites.count %>
-              <% end %>
-            <% else %>
-              <%= link_to new_user_session_path, data: { confirm: 'この機能はログインが必要です。'} do %>
-                  <i class="far fa-heart"></i>
-                <% end %>
-              <%= post.favorites.count %>
-            <% end %>
-          </p>
-        </div>
+    <p class="is-size-5 has-text-weight-bold"><%= link_to post.title, post_path(post) %></p>
+    <p><%= post.author %></p>
+    <% post.categories.each do |category| %>
+      <small><%= category.name %></small>
+    <% end %>
+    
+    <div class="content average-score">
+      <div class="star-rating">
+        <div class="star-rating-front" style="width: <%= post.review_score_percentage %>%">★★★★★</div>
+        <div class="star-rating-back">★★★★★</div>
       </div>
+      <div class="average-score-display ml-3 pt-2">
+        <%= post.avg_score %>点（<%= post.reviews.count %>件）
+      </div>
+    </div>
+    
+    <% if user_signed_in? %>
+      <% if current_user.already_favorited?(post) %>
+        <%= link_to post_favorites_path(post), method: :delete do %>
+          <i class="fas fa-heart" style="color: red;"></i>
+        <% end %>
+        <span style="color: red;"><%= post.favorites.count %></span>
+      <% else %>
+        <%= link_to post_favorites_path(post), method: :post do %>
+          <i class="far fa-heart"></i>
+        <% end %>
+        <%= post.favorites.count %>
+      <% end %>
+    <% else %>
+      <%= link_to new_user_session_path, data: { confirm: 'この機能はログインが必要です。'} do %>
+          <i class="far fa-heart"></i>
+        <% end %>
+      <%= post.favorites.count %>
     <% end %>
   </div>
 </div>
+<% end %>
 
 <nav class="pagination is-centered is-rounded mt-5" role="navigation" aria-label="pagination">
 <%= paginate @posts %>
-</naV>
+</nav>
