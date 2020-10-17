@@ -1,22 +1,5 @@
 <p class="is-size-3 has-text-weight-bold has-text-centered">検索結果 : <%= @search_count.count %>件</p>
-<br>
-
-<p class="is-size-５ has-text-centered">並び替え：</p>
-<div class="buttons has-addons is-centered mb-5">
-  <%= search_form_for @q, url:review_sort_path do |f| %>
-    <%= f.hidden_field :title_or_content_or_author_cont %>
-    <%= f.hidden_field :average_gteq %> 
-    <%= f.hidden_field :categories_id_eq %>
-    <%= f.submit 'レビュー評価順', class: 'button is-text' %>
-  <% end %>
-  
-  <%= search_form_for @q, url:fav_sort_path do |f| %>
-    <%= f.hidden_field :title_or_content_or_author_cont %>
-    <%= f.hidden_field :average_gteq %> 
-    <%= f.hidden_field :categories_id_eq %>
-    <%= f.submit 'お気に入り数順', class: 'button is-text' %>
-  <% end %>
-</div>
+<p class="is-size-5  has-text-centered mb-5">（お気に入り数順）</p>
 <br>
 
 <% @posts.each do |post| %>
@@ -51,5 +34,123 @@
 <% end %>
 
 <nav class="pagination is-rounded mt-5" role="navigation" aria-label="pagination">
-<%= paginate @posts %>
-</naV>
+  <%= paginate @posts %>
+</nav>
+
+<div class="aaa">
+  <% unless @search_count.count == 0 %>
+  <button class="button upper1 has-text-weight-bold" id="open">
+    <span class="icon">
+      <i class="fas fa-search-plus"></i>
+    </span>
+    <span>絞り込む</span>
+  </button>
+  <button class="button upper2 has-text-weight-bold" id="show">
+    <span class="icon">
+      <i class="fas fa-sort"></i>
+    </span>
+    <span>並べ替え</span>
+  </button>
+  <% end %>
+</div>
+
+<div class="modal 1">
+  <div class="modal-background 1"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title has-text-weight-bold">
+          絞り込む
+        </p>
+        <button class="delete" aria-label="close" id="close"></button>
+      </header>
+      <section class="modal-card-body">
+        <%= search_form_for @q, url:search_path do |f| %>
+        <div class="field">
+          <%= f.label :title_or_content_or_author, "フリーワード", class: 'label' %>
+          <p class="control has-icons-left">
+            <%= f.search_field :title_or_content_or_author_cont, class: 'input', placeholder: "作品名、作者、キーワードで探す" %>
+            <span class="icon is-small is-left">
+              <i class="fas fa-book-open"></i>
+            </span>
+          </p>
+        </div>
+        <div class="field">
+          <%= f.label :average, "評価", class: 'label mt-4' %>
+          <div class="control has-icons-left">
+            <div class="select">
+              <%= f.select :average_gteq, {'１以上': 1, '２以上': 2, '３以上': 3, '４以上': 4, '５以上': 5}, {include_blank: '指定なし'}, class: '' %> 
+            </div>
+            <div class="icon is-small is-left">
+              <i class="fas fa-star" style="color: #ffcc33;"></i>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mt-4 mb-2">
+          <%= f.label :categories_id_eq, "カテゴリー", class: 'label mt-4' %>
+        </div>
+        <div class="columns is-centered is-mobile is-gapless ml-5">
+          <div class="column ml-5">
+            <ul>
+              <li><%= f.radio_button :categories_id_eq, '', {:checked => true} %> 指定なし</li>
+              <% i = 1 %>
+              <% while i <= 7 %>
+                <li><%= f.radio_button :categories_id_eq, i %><%= @categories.find(i).name %></li>
+                <% i+= 1 %>
+              <% end %>
+            </ul>
+          </div>
+          <div class="column">
+            <ul>
+              <% y = 8 %>
+              <% while y <= 15 %>
+                <li><%= f.radio_button :categories_id_eq, y %><%= @categories.find(y).name %></li>
+                <% y+= 1 %>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+        
+      </section>
+      <footer class="modal-card-foot">
+        <%= button_tag(type: 'submit', class: 'button is-info is-rounded') do %>
+          <span class="icon">
+            <i class="fas fa-search"></i>
+          </span>
+          <span>再検索</span>
+        <% end %>
+       <% end %>
+      </footer>
+    </div>
+  </div>
+</div>
+
+<div class="modal 2">
+  <div class="modal-background 2"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title has-text-weight-bold">並べ替え</p>
+        <button class="delete" aria-label="close" id="close"></button>
+      </header>
+      <section class="modal-card-body">
+        <div class="buttons is-centered">
+          <%= search_form_for @q, url:review_sort_path do |f| %>
+            <%= f.hidden_field :title_or_content_or_author_cont %>
+            <%= f.hidden_field :average_gteq %> 
+            <%= f.hidden_field :categories_id_eq %>
+            <%= f.submit 'レビュー評価順', class: 'button is-text' %>
+          <% end %>
+          <%= search_form_for @q, url:fav_sort_path do |f| %>
+            <%= f.hidden_field :title_or_content_or_author_cont %>
+            <%= f.hidden_field :average_gteq %> 
+            <%= f.hidden_field :categories_id_eq %>
+            <%= f.submit 'お気に入り数順', class: 'button is-text' %>
+          <% end %>
+        </div>
+      </section>
+      <footer class="modal-card-foot"></footer>
+    </div>
+  </div>
+</div>
+
+<%= javascript_include_tag 'sample.js' %>

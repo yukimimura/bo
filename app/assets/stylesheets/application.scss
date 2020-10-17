@@ -24,12 +24,6 @@ body {
   margin-bottom: 0;
 }
 
-
-
-.navbar {
-  background-color: #EEEEEE; 
-}
-
 a {
     color: #4a4a4a;
 }
@@ -37,30 +31,6 @@ a:hover {
     color: #ff0000;
 }
 
-/* Navigation */
-.topnav {
-   
-    overflow: hidden;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 64px;
-}
-
-.parent {
-    text-align: right;
-    display: flex;
-    justify-content: flex-end;
-}
-
-
-
-.topnav a {
-  text-align: center;
-  text-decoration: none;
-}
-
-/* */
 .con {
   display: flex;
   width: 230px;
@@ -96,9 +66,10 @@ a:hover {
 }
 
 .re {
-  text-align: center,
+  text-align: center;
 }
 
+// links
 .amazon {
   display: inline-block;
   padding: 0.3em 1em;
@@ -131,11 +102,63 @@ a:hover {
   color: white;
 }
 
-.mam {
-  padding-left: 70px;
+// modal
+.modal-card-foot .button {
+  margin : 0 auto;
+  padding: 0 90px;
 }
 
-.mam img {
-  width: 150px;
-  height: 235px;
+.aaa {
+  position: fixed;
+  top: 94%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.upper1{
+  transition:1s;
+  opacity:0.7;
+  box-shadow: 1px 1px 4px rgba(0,0,0,0.4);
+  background-color: #000;
+  color: #FFF;
+  border-radius: 18px;
+  border: 0;
+  height: 35px;
+
+}
+
+.upper1:hover{
+  opacity:1;
+  color: #FFF;
+}
+
+.upper2{
+  transition:1s;
+  opacity:0.7;
+  box-shadow: 1px 1px 4px rgba(0,0,0,0.4);
+  background-color: #000;
+  color: #FFF;
+  border-radius: 18px;
+  border: 0;
+  height: 35px;
+}
+
+.upper2:hover{
+  opacity:1;
+  color: #FFF;
+}
+
+//Navigation bar
+
+.navbar-menu {
+  background-color: #ffdd57;
+}
+
+.navbar .main {
+  color: black;
+  font-family: cursive;
+}
+
+.navbar a {
+  padding-top: 5px;
 }

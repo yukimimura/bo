@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'search', to: 'toppages#search'
   get 'review_sort', to: 'toppages#review_sort'
   get 'fav_sort', to: 'toppages#fav_sort'
+  get 'sample', to: 'toppages#sample'
 
   devise_for :users
   resources :users do

@@ -11,8 +11,9 @@
             <br>
             作者：<%= @post.author %>
             <br>
+            ジャンル：
             <% @post.categories.each do |category| %>
-              ジャンル：<%= category.name %>
+              <%= category.name %>
             <% end %>
             <br>
             お気に入り：

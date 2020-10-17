@@ -2,7 +2,7 @@
 <br>
 
   <div class="columns is-centered">
-    <div class="column is-4">
+    <div class="column  is-7-tablet is-5-desktop is-4-widescreen">
       <%= search_form_for @q, url:search_path do |f| %>
       
       <div class="field">
@@ -27,15 +27,33 @@
         </div>
       </div>
         
-      <div class="mt-4">
+      <div class="mt-4 mb-2">
         <%= f.label :categories_id_eq, "カテゴリー", class: 'label mt-4' %>
-        <div class="">
-          <p><%= f.radio_button :categories_id_eq, '', {:checked => true} %> 指定なし</p>
-          <div class="">
-            <%= f.collection_radio_buttons :categories_id_eq, @categories, :id, :name, class: '' %>
-          </div>
+      </div>
+      <div class="columns is-centered is-mobile is-gapless ml-5">
+        <div class="column">
+          <ul>
+            <li><%= f.radio_button :categories_id_eq, {:checked => true} %> 指定なし</li>
+            <% i = 1 %>
+            <% while i <= 7 %>
+              <li><%= f.radio_button :categories_id_eq, i %><%= @categories.find(i).name %></li>
+              <% i+= 1 %>
+            <% end %>
+          </ul>
+        </div>
+        <div class="column">
+          <ul>
+            <% y = 8 %>
+            <% while y <= 15 %>
+              <li><%= f.radio_button :categories_id_eq, y %><%= @categories.find(y).name %></li>
+              <% y+= 1 %>
+            <% end %>
+          </ul>
         </div>
       </div>
+      
+              
+         
         
       <div class="columns is-centered mt-3">
         <div class="column is-6">
