@@ -30,6 +30,6 @@ class ToppagesController < ApplicationController
   
   private
   def search_params
-    params.require(:q).permit(:title_or_content_or_author_cont, :average_gteq, :categories_id_eq)
+    params.require(:q).permit!
   end
 end
