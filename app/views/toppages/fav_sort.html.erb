@@ -9,6 +9,7 @@
       <img class="mr-4" width="150" height="240" src="<%= post.image.url if post.image? %>" alt="">
     <% end %>
   </div>
+  
   <div class="item2">
     <p class="is-size-5 has-text-weight-bold"><%= link_to post.title, post_path(post) %></p>
     <p><%= post.author %></p>
