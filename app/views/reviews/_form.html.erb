@@ -26,6 +26,11 @@
     <%= f.hidden_field :score, id: "rating-value" %>
     <%= f.text_field :content, class: "textarea" %>
     <%= f.submit "保存", class: "button mt-3" %>
+    <% unless user_signed_in? %>
+      <%= link_to new_user_session_path do %>
+        <button class="button is-text mt-3" style="color: blue;">ログインはこちら</button>
+      <% end %>
+    <% end %>
   <% end %>
 </div>
 

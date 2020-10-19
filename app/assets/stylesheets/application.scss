@@ -39,28 +39,6 @@ a:hover {
   padding-bottom: 8px;
 }
 
-.con2 {
-  display: flex;
-  width: 450px;
-  margin : 0 auto;
-  border-bottom: solid #EEEEEE;
-  
-}
-
-.post-content {
-  width: 280px;
-  height: 75px;
-  overflow: hidden;
-  position: relative;
-}
-
-.post-content:after {
-  content: "...";
-  position: absolute;
-  top: 50px;
-  left: 270px;
-}
-
 .pagination {
   margin : 0 auto;
 }
@@ -69,7 +47,7 @@ a:hover {
   text-align: center;
 }
 
-// links
+// posts/show links
 .amazon {
   display: inline-block;
   padding: 0.3em 1em;
@@ -102,7 +80,7 @@ a:hover {
   color: white;
 }
 
-// modal
+// toppages modal
 .modal-card-foot .button {
   margin : 0 auto;
   padding: 0 90px;
@@ -110,9 +88,11 @@ a:hover {
 
 .aaa {
   position: fixed;
-  top: 94%;
+  top: 95%;
   left: 50%;
   transform: translate(-50%, -50%);
+  margin: 0;
+  padding: 0;
 }
 
 .upper1{
@@ -148,17 +128,27 @@ a:hover {
   color: #FFF;
 }
 
-//Navigation bar
+//layouts/_navbar
 
 .navbar-menu {
   background-color: #ffdd57;
 }
 
-.navbar .main {
+.navbar .logo {
   color: black;
   font-family: cursive;
 }
 
 .navbar a {
   padding-top: 5px;
+}
+
+// posts/show
+.image {
+  margin : 0 auto;
+}
+
+// toppages/search
+.post-border {
+  border-bottom: solid #EEEEEE;
 }

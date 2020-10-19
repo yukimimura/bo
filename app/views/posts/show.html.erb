@@ -1,51 +1,51 @@
 <div class="columns is-centered">
-  <div class="column is-6">
-    <article class="media">
-      <figure class="media-left">
-        <img class="" width="250" height="250" src="<%= @post.image.url if @post.image? %>">
-      </figure>
-      <div class="media-content">
-        <div class="content">
-          <p>
-            <strong class="is-size-5"><%= @post.title %></strong> 
-            <br>
-            作者：<%= @post.author %>
-            <br>
-            ジャンル：
-            <% @post.categories.each do |category| %>
-              <%= category.name %>
-            <% end %>
-            <br>
-            お気に入り：
-            <% if user_signed_in? %>
-              <% if current_user.already_favorited?(@post) %>
-                <%= link_to post_favorites_path(@post), method: :delete do %>
-                  <i class="fas fa-heart" style="color: red;"></i>
-                <% end %>
-                <span style="color: red;"><%= @post.favorites.count %></span>
-              <% else %>
-                <%= link_to post_favorites_path(@post), method: :post do %>
-                  <i class="far fa-heart"></i>
-                <% end %>
-                <%= @post.favorites.count %>
+  <div class="column is-7">
+    <div class="columns is-gapless">
+      <div class="column is-two-fifths">
+        <figure class="media-left">
+          <img class="image pb-3" style="width: 200px; height: 300px;" src="<%= @post.image.url if @post.image? %>">
+        </figure>
+      </div>
+      <div class="column">
+        <p>
+          <strong class="is-size-5"><%= @post.title %></strong> 
+          <br>
+          作者：<%= @post.author %>
+          <br>
+          ジャンル：
+          <% @post.categories.each do |category| %>
+            <%= category.name %>
+          <% end %>
+          <br>
+          お気に入り：
+          <% if user_signed_in? %>
+            <% if current_user.already_favorited?(@post) %>
+              <%= link_to post_favorites_path(@post), method: :delete do %>
+                <i class="fas fa-heart" style="color: red;"></i>
               <% end %>
+              <span style="color: red;"><%= @post.favorites.count %></span>
             <% else %>
-              <%= link_to new_user_session_path, data: { confirm: 'この機能はログインが必要です。'} do %>
-                  <i class="far fa-heart"></i>
-                <% end %>
+              <%= link_to post_favorites_path(@post), method: :post do %>
+                <i class="far fa-heart"></i>
+              <% end %>
               <%= @post.favorites.count %>
             <% end %>
-            <div class="mt-5">
-              <p>【あらすじ】</p>
-              <%= @post.content %>
-            </div>
-            <br>
-            <a href="" class="amazon mt-1" >Amazonで詳細を見る</a>
-            <a href="" class="rakuten mt-1">楽天で詳細を見る</a>
-          </p>
-        </div>
+          <% else %>
+            <%= link_to new_user_session_path, data: { confirm: 'この機能はログインが必要です。'} do %>
+                <i class="far fa-heart"></i>
+              <% end %>
+            <%= @post.favorites.count %>
+          <% end %>
+          <div class="mt-5">
+            <p>【あらすじ】</p>
+            <%= @post.content %>
+          </div>
+          <br>
+          <a href="" class="amazon mt-1" >Amazonで詳細を見る</a>
+          <a href="" class="rakuten mt-1">楽天で詳細を見る</a>
+        </p>
       </div>
-    </article>
+    </div>
   </div>
 </div>
 
@@ -98,5 +98,3 @@
 <nav class="pagination is-rounded mt-5" role="navigation" aria-label="pagination">
 <%= paginate @reviews %>
 </nav>
-
-

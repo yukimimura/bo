@@ -3,67 +3,79 @@
 <br>
 
 <% @posts.each do |post| %>
-<div class="con2 mb-5 pb-5">
-  <div class="item1 mr-3 ml-5">
-    <%= link_to post_path(post) do %>
-      <img class="mr-4" width="150" height="240" src="<%= post.image.url if post.image? %>" alt="">
-    <% end %>
-  </div>
-  
-  <div class="item2">
-    <p class="is-size-5 has-text-weight-bold"><%= link_to post.title, post_path(post) %></p>
-    <p><%= post.author %></p>
-    <% post.categories.each do |category| %>
-      <small><%= category.name %></small>
-    <% end %>
-    <br>
-    <small>お気に入り数：<%= post.favorites.count %></small>
-    
-    <div class="content average-score">
-      <div class="star-rating mb-2">
-        <div class="star-rating-front" style="width: <%= post.review_score_percentage %>%">★★★★★</div>
-        <div class="star-rating-back">★★★★★</div>
-      </div>
-      <div class="average-score-display ml-3 pt-2">
-        <%= post.avg_score %>点（<%= post.reviews.count %>件）
+  <div class="columns is-centered">
+    <div class="column  is-7-tablet is-5-desktop is-4-widescreen">
+      <div class="columns is-gapless mb-5 pb-5 is-mobile post-border">
+        <div class="column is-one-third">
+          <%= link_to post_path(post) do %>
+            <img class="image pb-3" style="width: 130px; height: 200px;" src="<%= post.image.url if post.image? %>">
+          <% end %>
+        </div>
+        <div class="column ml-5">
+          <p class="is-size-5 has-text-weight-bold"><%= link_to post.title, post_path(post) %></p>
+          <p><%= post.author %></p>
+          <% post.categories.each do |category| %>
+            <small><%= category.name %></small>
+          <% end %>
+          <br>
+          <small>お気に入り数：<%= post.favorites.count %></small>
+          
+          <div class="average-score">
+            <div class="star-rating mb-2">
+              <div class="star-rating-front" style="width: <%= post.review_score_percentage %>%">★★★★★</div>
+              <div class="star-rating-back">★★★★★</div>
+            </div>
+            <div class="average-score-display ml-1 pt-2">
+              <%= post.avg_score %>点
+            </div>
+          </div>
+          <p class="post-content mt-2"><%= post.content %></p>
+        </div>
       </div>
     </div>
-    
-    <p class="post-content unchi"><%= post.content %></p>
   </div>
-</div>
 <% end %>
 
 <nav class="pagination is-rounded mt-5" role="navigation" aria-label="pagination">
   <%= paginate @posts %>
 </nav>
 
-<div class="aaa">
+<div class="aaa columns is-mobile">
   <% unless @search_count.count == 0 %>
-  <button class="button upper1 has-text-weight-bold" id="open">
-    <span class="icon">
-      <i class="fas fa-search-plus"></i>
-    </span>
-    <span>絞り込む</span>
+  <div class="column" >
+    <button class="button upper1 has-text-weight-bold" id="open">
+      <span class="icon">
+        <i class="fas fa-search-plus"></i>
+      </span>
+      <span>絞り込む</span>
+    </button>
+  </div>
+  <div class="column" >
+    <button class="button upper2 has-text-weight-bold" id="show">
+      <span class="icon">
+        <i class="fas fa-sort"></i>
+      </span>
+      <span>並べ替え</span>
   </button>
-  <button class="button upper2 has-text-weight-bold" id="show">
-    <span class="icon">
-      <i class="fas fa-sort"></i>
-    </span>
-    <span>並べ替え</span>
-  </button>
+  </div>
   <% end %>
 </div>
 
 <div class="modal 1">
   <div class="modal-background 1"></div>
     <div class="modal-card">
+      
       <header class="modal-card-head">
         <p class="modal-card-title has-text-weight-bold">
-          絞り込む
+          <% if @search_count.count == 0 %>
+        　再検索
+        　<% else %>
+        　絞り込む
+        　<% end %>
         </p>
         <button class="delete" aria-label="close" id="close"></button>
       </header>
+      
       <section class="modal-card-body">
         <%= search_form_for @q, url:search_path do |f| %>
         <div class="field">
@@ -86,11 +98,10 @@
             </div>
           </div>
         </div>
-        
         <div class="mt-4 mb-2">
           <%= f.label :categories_id_eq, "カテゴリー", class: 'label mt-4' %>
         </div>
-        <div class="columns is-centered is-mobile is-gapless ml-5">
+        <div class="columns is-centered is-mobile is-gapless">
           <div class="column ml-5">
             <ul>
               <li><%= f.radio_button :categories_id_eq, '', {:checked => true} %> 指定なし</li>
@@ -111,17 +122,24 @@
             </ul>
           </div>
         </div>
-        
       </section>
+      
       <footer class="modal-card-foot">
         <%= button_tag(type: 'submit', class: 'button is-info is-rounded') do %>
           <span class="icon">
-            <i class="fas fa-search"></i>
+            <i class="fas fa-search-plus"></i>
           </span>
-          <span>再検索</span>
+          <span class="has-text-weight-bold">
+            <% if @search_count.count == 0 %>
+          　再検索
+          　<% else %>
+          　絞り込む
+          　<% end %>
+          </span>
         <% end %>
        <% end %>
       </footer>
+      
     </div>
   </div>
 </div>
@@ -154,4 +172,4 @@
   </div>
 </div>
 
-<%= javascript_include_tag 'sample.js' %>
+<%= javascript_include_tag 'modal.js' %>

@@ -1,41 +1,41 @@
-<section class="section">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-4">
-        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div class="field">
-          <%= f.label :email, "Email", class: 'label' %>
-          <p class="control has-icons-left">
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", :placeholder => "email", class: "input" %>
-            <span class="icon is-small is-left">
-              <i class="fas fa-envelope"></i>
-            </span>
-          </p>
-        </div>
-
-        <div class="field">
-          <%= f.label :password, "Password", class: 'label' %>
-          <p class="control has-icons-left">
-            <%= f.password_field :password, autocomplete: "current-password", :placeholder => "password", class: "input" %>
-            <span class="icon is-small is-left">
-              <i class="fas fa-lock"></i>
-            </span>
-          </p>
-        </div>
-        
-        <div class="columns is-centered mt-3">
-          <div class="column is-6">
-            <%= button_tag(type: 'submit', class: 'button is-info is-rounded is-fullwidth') do %>
-              <span class="icon">
-                <i class="fas fa-sign-in-alt"></i>
-              </span>
-              <span>ログイン</span>
-            <% end %>
-          </div>
-        </div>
-          
+<div class="columns is-centered">
+  <div class="column is-4">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="field">
+      <%= f.label :email, "Email", class: 'label' %>
+      <p class="control has-icons-left">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", :placeholder => "email", class: "input" %>
+        <span class="icon is-small is-left">
+          <i class="fas fa-envelope"></i>
+        </span>
+      </p>
+    </div>
+    <div class="field">
+      <%= f.label :password, "Password", class: 'label' %>
+      <p class="control has-icons-left">
+        <%= f.password_field :password, autocomplete: "current-password", :placeholder => "password", class: "input" %>
+        <span class="icon is-small is-left">
+          <i class="fas fa-lock"></i>
+        </span>
+      </p>
+    </div>
+    <div class="columns is-centered mt-3">
+      <div class="column is-6">
+        <%= button_tag(type: 'submit', class: 'button is-info is-rounded is-fullwidth') do %>
+          <span class="icon">
+            <i class="fas fa-sign-in-alt"></i>
+          </span>
+          <span>ログイン</span>
         <% end %>
       </div>
     </div>
+    <% end %>
   </div>
-</section>
+</div>
+<div class="columns is-centered">
+  <div class="column is-2">
+    <%= link_to new_user_registration_path do %>
+      <button class="button is-text is-fullwidth" style="color: blue;">新規登録はこちら</button>
+    <% end %>
+  </div>
+</div>
