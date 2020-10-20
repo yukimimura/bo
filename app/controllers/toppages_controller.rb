@@ -24,12 +24,9 @@ class ToppagesController < ApplicationController
     @search_count = @q.result.includes(:categories)
     @categories = Category.all
   end
-  
-  def sample
-  end
-  
+
   private
   def search_params
-    params.require(:q).permit!
+    params.require(:q).permit(:title_or_content_or_author_cont, :average_gteq, :categories_id_eq)
   end
 end

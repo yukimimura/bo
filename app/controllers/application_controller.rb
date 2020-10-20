@@ -1,8 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   
-  #privateいらないかも
-  
   def counts(user)
     @count_followings = user.followings.count
     @count_followers = user.followers.count
