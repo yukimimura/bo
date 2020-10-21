@@ -33,7 +33,7 @@
     <div class="columns is-centered is-mobile is-gapless ml-5">
       <div class="column">
         <ul>
-          <li><%= f.radio_button :categories_id_eq, {:checked => true} %> 指定なし</li>
+          <li><%= f.radio_button :categories_id_eq, '',{:checked => true} %> 指定なし</li>
           <% i = 1 %>
           <% while i <= 7 %>
             <li><%= f.radio_button :categories_id_eq, i %><%= @categories.find(i).name %></li>
