@@ -47,6 +47,10 @@ a:hover {
   text-align: center;
 }
 
+.ho {
+  border-radius: 50%; 
+}
+
 // posts/show links
 .amazon {
   display: inline-block;
@@ -148,7 +152,28 @@ a:hover {
   margin : 0 auto;
 }
 
-// toppages/search
+// toppages/searchとusers/likesとrooms/index
 .post-border {
   border-bottom: solid #EEEEEE;
+}
+
+// rooms/show
+#main {
+  margin: 0 auto;
+  overflow-y: scroll;
+  padding: 1em;
+  border-top: solid #EEEEEE;
+}
+
+#hoge {
+  height: 300px;
+}
+
+.qqq {
+  border-top: solid #EEEEEE;
+}
+
+// rooms/index
+.photo {
+  text-align: right;
 }

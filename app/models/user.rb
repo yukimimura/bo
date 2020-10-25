@@ -5,12 +5,14 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   validates :username, presence: true
-         
+  
+  # レビュー機能
   has_many :reviews, dependent: :destroy
   
-  has_many :relationships
+  # フォロー機能
+  has_many :relationships, dependent: :destroy
   has_many :followings, through: :relationships, source: :follow
-  has_many :reverses_of_relationship, class_name: 'Relationship', foreign_key: 'follow_id'
+  has_many :reverses_of_relationship, class_name: 'Relationship', foreign_key: 'follow_id', dependent: :destroy
   has_many :followers, through: :reverses_of_relationship, source: :user
   
   def follow(other_user)
@@ -28,6 +30,7 @@ class User < ApplicationRecord
     self.followings.include?(other_user)
   end
   
+  # いいね機能
   has_many :favorites, dependent: :destroy
   has_many :myfavorites, through: :favorites, source: :post
   
@@ -35,6 +38,11 @@ class User < ApplicationRecord
     self.favorites.exists?(post_id: post.id)
   end
   
+  # プロフィール画像機能
   mount_uploader :image, ImageUploader
+  
+  # DM機能
+  has_many :messages, dependent: :destroy
+  has_many :entries, dependent: :destroy
   
 end

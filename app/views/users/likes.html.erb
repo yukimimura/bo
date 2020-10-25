@@ -4,28 +4,59 @@
       <% if @user.image? %>
         <img class="" width="200" height="200" src="<%= @user.image.url %>" >
       <% else %>
-        <%= image_tag "/assets/default.jpg", :size => '200x200' %>
+        <%= image_tag "/assets/default.jpg", size: '200x200', class: '' %>
       <% end %>
     </div>
     
-    <p class="is-size-1 has-text-weight-bold has-text-centered"><%= @user.username %></p>
+    <p class="is-size-2 has-text-weight-bold has-text-centered"><%= @user.username %></p>
     
     <% if current_user == @user %>
       <p class="has-text-centered"><%= @user.email %></p>
     <% else %>
-      <div class="has-text-centered mt-3">
+      <div class="is-centered mt-3 buttons">
         <%= render 'relationships/follow_button', user: @user %>
+        
+        <% if @isRoom == true %>
+          <button class="button is-rounded">
+            <%= link_to room_path(@roomId) do %>
+              <span class="icon">
+                <i class="far fa-envelope"></i>
+              </span>
+              <span class="has-text-weight-bold">メッセージ</span>
+            <% end %>
+          </button>
+        <% else %>
+          <%= form_for @room do |f| %>
+            <%= fields_for @entry do |e| %>
+              <%= e.hidden_field :user_id, value: @user.id %>
+            <% end %>
+            <%= button_tag(type: 'submit', class: 'button is-rounded') do %>
+              <span class="icon">
+                <i class="far fa-envelope"></i>
+              </span>
+              <span class="has-text-weight-bold">メッセージ</span>
+            <% end %>
+          <% end %>
+        <% end %>
       </div>
     <% end %>
-
+    
     <div class="has-text-centered mt-3">
       <% if current_user == @user %>
-        <button class="button">
+        <button class="button is-rounded">
+          <%= link_to rooms_path do %>
+            <span class="icon">
+              <i class="far fa-envelope"></i>
+            </span>
+            <span class="has-text-weight-bold">メッセージ</span>
+          <% end %>
+        </button>
+        <button class="button is-rounded">
           <%= link_to edit_user_path(@user) do %>
             <span class="icon">
               <i class="fas fa-user-edit"></i>
             </span>
-            <span>編集</span>
+            <span class="has-text-weight-bold">編集</span>
           <% end %>
         </button>
       <% end %>
@@ -39,14 +70,12 @@
         <li class="is-active has-text-weight-bold"><a href="<%= likes_user_path(@user) %>">お気に入り</a></li>
       </ul>
     </div>
-    
     <div class="has-text-centered">
       <div>
         <p class="heading is-active">likes</p>
         <p class="title"><%= @count_likes %></p>
       </div>
     </div>
-     
   </div>
 </div>
 

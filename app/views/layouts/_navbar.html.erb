@@ -16,35 +16,65 @@
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-end">
       <div class="navbar-item">
-        <div class="buttons">
+        
+        <div class="field has-addons mr-5">
           <% if user_signed_in? %>
-            <%= link_to user_path(current_user), class: "button is-warning" do %>
-              <span class="icon">
-                <i class="fas fa-user"></i>
-              </span>
-              <span class="has-text-weight-bold"><%= current_user.username %></span>
-            <% end %>
-            <%= link_to destroy_user_session_path, method: :delete, class: "button is-warning" do %>
-              <span class="icon">
-                <i class="fas fa-sign-out-alt"></i>
-              </span>
-              <span class="has-text-weight-bold">ログアウト</span>
-            <% end %>
-          <% else %>
-            <%= link_to new_user_session_path, class: "button is-warning" do %>
-              <span class="icon">
-                <i class="fas fa-sign-in-alt"></i>
-              </span>
-              <span class="has-text-weight-bold">ログイン</span>
-            <% end %>
-            <%= link_to new_user_registration_path, class: "button is-warning" do %>
-              <span class="icon">
-                <i class="fas fa-pen-square"></i>
-              </span>
-              <span class="has-text-weight-bold">新規登録</span>
-            <% end %>
+            <p class="control">
+              <%= link_to root_path do %>
+                <button class="button is-rounded is-warning">
+                  <span class="icon">
+                    <i class="fas fa-home fa-lg"></i>
+                  </span>
+                </button>
+              <% end %>
+            </p>
+            <p class="control">
+              <%= link_to user_path(current_user), class: "" do %>
+                <button class="button is-rounded is-warning">
+                  <span class="icon">
+                    <i class="fas fa-user fa-lg"></i>
+                  </span>
+                </button>
+              <% end %>
+            </p>
+            <p class="control">
+              <%= link_to rooms_path do %>
+                <button class="button is-rounded is-warning">
+                  <span class="icon">
+                    <i class="far fa-envelope fa-lg"></i>
+                  </span>
+                </button>
+              <% end %>
+            </p>
+            <p class="control">
+              <%= link_to destroy_user_session_path, method: :delete do %>
+                <button class="button is-rounded is-warning">
+                  <span class="icon">
+                    <i class="fas fa-sign-out-alt fa-lg"></i>
+                  </span>
+                </button>
+              <% end %>
+            <% else %>
+            </p>
+            <p class="control">
+              <%= link_to new_user_session_path, class: "button is-warning" do %>
+                <span class="icon">
+                  <i class="fas fa-sign-in-alt"></i>
+                </span>
+                <span class="has-text-weight-bold">ログイン</span>
+              <% end %>
+            </p>
+            <p class="control">
+              <%= link_to new_user_registration_path, class: "button is-warning" do %>
+                <span class="icon">
+                  <i class="fas fa-pen-square"></i>
+                </span>
+                <span class="has-text-weight-bold">新規登録</span>
+              <% end %>
+            </p>
           <% end %>
         </div>
+
       </div>
     </div>
   </div>

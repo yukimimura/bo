@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:show, :followings, :followers]
+  before_action :authenticate_user!, only: [:show, :followings, :followers, :likes, :edit]
+  before_action :set_user, only: [:show, :followings, :followers, :likes]
   
   def show
-    @user = User.find(params[:id])
     counts(@user)
     @reviews = @user.reviews.order(id: :desc).page(params[:page]).per(3)
+    set_dm
   end
 
   def edit
@@ -13,7 +14,6 @@ class UsersController < ApplicationController
   
   def update
     @user = current_user
-    
     if @user.update(user_params)
       redirect_to @user, notice: "ユーザー情報を更新しました。"
     else
@@ -22,26 +22,50 @@ class UsersController < ApplicationController
   end
   
   def followings
-    @user = User.find(params[:id])
     @followings = @user.followings.page(params[:page]).per(10)
     counts(@user)
+    set_dm
   end
   
   def followers
-    @user = User.find(params[:id])
     @followers = @user.followers.page(params[:page]).per(10)
     counts(@user)
+    set_dm
   end
   
   def likes
-    @user = User.find(params[:id])
-    counts(@user)
     @posts = @user.myfavorites.order(id: :desc).page(params[:page]).per(5)
+    counts(@user)
+    set_dm
   end
   
   private
   
   def user_params
     params.require(:user).permit(:username, :email, :image)
+  end
+  
+  def set_user
+    @user = User.find(params[:id])
+  end
+  
+  def set_dm
+     # DM機能
+    @currentUserEntry=Entry.where(user_id: current_user.id)
+    @userEntry=Entry.where(user_id: @user.id)
+    unless @user.id == current_user.id
+      @currentUserEntry.each do |cu|
+        @userEntry.each do |u|
+          if cu.room_id == u.room_id
+            @isRoom = true
+            @roomId = cu.room_id
+          end
+        end
+      end
+      unless @isRoom
+        @room = Room.new
+        @entry = Entry.new
+      end
+    end
   end
 end
