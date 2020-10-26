@@ -19,25 +19,25 @@ https://find-book-0605.herokuapp.com/
 
 ## 機能
 <h4> ・条件検索機能 </h4>
-<p align="center"><img src="home_sample.png" width="300" height="300"></p>
+<img src="home_sample.png" width="300" height="300">
 <br>
 <h4> ・評価・コメント機能 </h4>
-<p align="center"><img src="review_sample.png" width="300" height="250"></p>
+<img src="review_sample.png" width="300" height="250">
 <br>
 <h4> ・検索ソート機能 </h4>
-<p align="center"><img src="sort_sample.png" width="130" height="50"></p>
+<img src="sort_sample.png" width="130" height="50">
 <br>
 <h4> ・ユーザー登録機能 </h4>
-<p align="center"><img src="user_sample.png" width="300" height="250"></p>
+<img src="user_sample.png" width="300" height="250">
 <br>
 <h4> ・フォロー・アンフォロー機能 </h4>
-<p align="center"><img src="follow_sample.png" width="130" height="50"></p>
+<img src="follow_sample.png" width="130" height="50">
 <br>
 <h4> ・メッセージ機能 </h4>
-<p align="center"><img src="message_sample.png" width="300" height="250"></p>
+<img src="message_sample.png" width="300" height="250">
 <br>
 <h4> ・お気に入り機能 </h4>
-<p align="center"><img src="fav_sample.png" width="100" height="100"></p>
+<img src="fav_sample.png" width="100" height="100">
 <br>
 
 ## ER図
