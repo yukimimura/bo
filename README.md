@@ -1,4 +1,5 @@
-# Find Book
+# アプリ名　
+### Find Book
 
 ## 概要
 読みたい漫画などの書籍を見つけるためのアプリです。<br>
@@ -8,7 +9,7 @@
 ## デプロイ
 https://find-book-0605.herokuapp.com/
 
-## 開発環境
+## 技術
 * Ruby 2.5.3
 * Ruby on Rails 5.2.4
 * Mysql 5.5.62
@@ -16,6 +17,7 @@ https://find-book-0605.herokuapp.com/
 * jQuery
 * Bulma
 * AmazonS3
+* gem(devise/kaminari/admin/carrierwave/ransack/pry-rails/fog-aws/dotenv-rails)
 
 ## 機能
 <h4> ・条件検索機能 </h4>
