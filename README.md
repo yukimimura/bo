@@ -43,10 +43,7 @@ https://find-book-0605.herokuapp.com/
 <br>
 
 ## ER図
-<h4> ER図１ </h4>
-<img src="er1.png" width="500" height="350">
-<h4> ER図2 </h4>
-<img src="er2.png" width="600" height="300">
+https://drive.google.com/file/d/1kzoVZFosVEoM2uuzZ3lDFT-DSAPH5SzS/view?usp=sharing
 
 ## インストール
 $ git clone https://github.com/yukimimura/find-book.git<br>
