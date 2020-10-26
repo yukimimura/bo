@@ -1,4 +1,6 @@
 # Find Book
+<img src="home_sample.png" width="400" height="350">
+
 
 ## 概要
 読みたい漫画などの書籍を見つけるためのアプリです。<br>
