@@ -19,19 +19,19 @@ https://find-book-0605.herokuapp.com/
 
 ## 機能
 * ユーザー登録機能
-<img src="user_sample.png" width="200" height="150">
+<span><img src="user_sample.png" width="200" height="150"></span>
 * フォロー・アンフォロー機能
-<img src="follow_sample.png" width="200" height="150">
+<span><img src="follow_sample.png" width="150" height="80"></span>
 * 条件検索機能
-<img src="home_sample.png" width="200" height="150">
+<span><img src="home_sample.png" width="200" height="150"></span>
 * 検索ソート機能
-<img src="sort_sample.png" width="200" height="150">
+<span><img src="sort_sample.png" width="200" height="150"></span>
 * 評価・コメント機能
-<img src="review_sample.png" width="200" height="150">
+<span><img src="review_sample.png" width="200" height="150"></span>
 * メッセージ機能
-<img src="message_sample.png" width="200" height="150">
+<span><img src="message_sample.png" width="200" height="150"></span>
 * お気に入り機能
-<img src="fav_sample.png" width="200" height="150">
+<span><img src="fav_sample.png" width="200" height="150"></span>
 
 ## インストール
 
