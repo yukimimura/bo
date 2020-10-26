@@ -47,8 +47,8 @@ https://find-book-0605.herokuapp.com/
 <img src="er2.png" width="600" height="300">
 
 ## インストール
-$ git clone https://github.com/yukimimura/find-book.git
-$ bundle install
-$ rails db:create
-$ rails db:migrate
+$ git clone https://github.com/yukimimura/find-book.git<br>
+$ bundle install<br>
+$ rails db:create<br>
+$ rails db:migrate<br>
 $ rails s
