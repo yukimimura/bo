@@ -29,14 +29,11 @@ https://drive.google.com/file/d/1GZX0WEF6WeOfsOjPPUn6fHi2BnYY6EDV/view?usp=shari
 <h4> ・ユーザー登録機能 </h4>
 https://drive.google.com/file/d/16xJIvlxy1PAS5vflMkHnus-oa8uIklFE/view?usp=sharing
 <h4> ・フォロー・アンフォロー機能 </h4>
-<img src="follow_sample.png" width="130" height="50">
-<br>
+https://drive.google.com/file/d/16xJIvlxy1PAS5vflMkHnus-oa8uIklFE/view?usp=sharing
 <h4> ・メッセージ機能 </h4>
-<img src="message_sample.png" width="300" height="250">
-<br>
+https://drive.google.com/file/d/1_GzP8fS2P6S909AX2Ixbe6spSM1cEMBC/view?usp=sharing
 <h4> ・お気に入り機能 </h4>
-<img src="fav_sample.png" width="100" height="100">
-<br>
+https://drive.google.com/file/d/1TrMqDSY88nMTIr4OD030yJPeG1FMKl_Y/view?usp=sharing
 
 ## ER図
 https://drive.google.com/file/d/1kzoVZFosVEoM2uuzZ3lDFT-DSAPH5SzS/view?usp=sharing
