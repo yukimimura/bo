@@ -42,7 +42,7 @@ https://find-book-0605.herokuapp.com/
 
 ## ER図
 <h4> ER図１ </h4>
-<img src="er1.png" width="300" height="250"><img src="er2.png" width="300" height="250">
+<img src="er1.png" width="300" height="250">
 <br>
 <h4> ER図2 </h4>
 <img src="er2.png" width="300" height="250">
