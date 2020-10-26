@@ -42,29 +42,8 @@ https://find-book-0605.herokuapp.com/
 
 ## ER図
 <h4> ER図１ </h4>
-<img src="er1.png" width="300" height="250">
-<br>
+<img src="er1.png" width="500" height="350">
 <h4> ER図2 </h4>
-<img src="er2.png" width="300" height="250">
-<br>
+<img src="er2.png" width="600" height="300">
 
 ## インストール
-
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
