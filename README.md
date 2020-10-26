@@ -9,11 +9,12 @@
 ## デプロイ
 https://find-book-0605.herokuapp.com/
 
-## 技術
+## 使用言語・技術
+* HTML/CSS
 * Ruby 2.5.3
+* javascript
 * Ruby on Rails 5.2.4
 * Mysql 5.5.62
-* javascript
 * jQuery
 * Bulma
 * AmazonS3
