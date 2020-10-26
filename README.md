@@ -1,5 +1,4 @@
 # Find Book
-<img src="home_sample.png" width="400" height="350">
 
 ## 概要
 読みたい漫画などの書籍を見つけるためのアプリです。<br>
@@ -20,13 +19,19 @@ https://find-book-0605.herokuapp.com/
 
 ## 機能
 * ユーザー登録機能
+<img src="user_sample.png" width="200" height="150">
 * フォロー・アンフォロー機能
+<img src="follow_sample.png" width="200" height="150">
 * 条件検索機能
+<img src="home_sample.png" width="200" height="150">
 * 検索ソート機能
+<img src="sort_sample.png" width="200" height="150">
 * 評価・コメント機能
-<img src="https://gyazo.com/3be3dc65c08215b58ea5fbe97cbda7ba" width="400" height="350">
+<img src="review_sample.png" width="200" height="150">
 * メッセージ機能
+<img src="message_sample.png" width="200" height="150">
 * お気に入り機能
+<img src="fav_sample.png" width="200" height="150">
 
 ## インストール
 
