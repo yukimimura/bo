@@ -21,17 +21,13 @@ https://find-book-0605.herokuapp.com/
 
 ## 機能
 <h4> ・条件検索機能 </h4>
-<img src="home_sample.png" width="300" height="300">
-<br>
+https://drive.google.com/file/d/17BinyTiKiW2J0KNjkUt3chNeofxjOxx9/view?usp=sharing
 <h4> ・評価・コメント機能 </h4>
-<img src="review_sample.png" width="300" height="250">
-<br>
+https://drive.google.com/file/d/1jCQfR4BhcdXeHxZjPcUzQqt0zzbD285f/view?usp=sharing
 <h4> ・検索ソート機能 </h4>
-<img src="sort_sample.png" width="130" height="50">
-<br>
+https://drive.google.com/file/d/1GZX0WEF6WeOfsOjPPUn6fHi2BnYY6EDV/view?usp=sharing
 <h4> ・ユーザー登録機能 </h4>
-<img src="user_sample.png" width="300" height="250">
-<br>
+https://drive.google.com/file/d/16xJIvlxy1PAS5vflMkHnus-oa8uIklFE/view?usp=sharing
 <h4> ・フォロー・アンフォロー機能 </h4>
 <img src="follow_sample.png" width="130" height="50">
 <br>
