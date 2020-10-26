@@ -14,6 +14,9 @@ Rails.application.routes.draw do
       get :followers
       get :likes
     end
+    collection do
+      get :user_search
+    end
   end
   
   resources :posts do

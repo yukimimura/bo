@@ -7,6 +7,7 @@ class RoomsController < ApplicationController
       myRoomIds << entry.room.id
     end
     @anotherEntries = Entry.where(room_id: myRoomIds).where('user_id != ?',current_user.id)
+    @users = User.order(id: :desc).page(params[:page]).per(10)
   end
 
   def show

@@ -39,6 +39,14 @@ class UsersController < ApplicationController
     set_dm
   end
   
+  def user_search
+    if params[:username].present? 
+      @users = User.where('username LIKE ?', "%#{params[:username]}%").page(params[:page])
+    else
+      @users = User.none.page(params[:page])
+    end
+  end
+  
   private
   
   def user_params

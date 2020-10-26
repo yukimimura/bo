@@ -1,0 +1,38 @@
+<div class="columns is-centered">
+  <div class="column  is-7-tablet is-5-desktop is-4-widescreen">
+    <%= form_with(url: user_search_users_path, method: :get, local: true) do |f| %>
+      <%= f.label :username, "ユーザー検索", class: 'label' %>
+      <div class="field has-addons mb-5">
+  			<div class="control is-expanded has-icons-left">
+		  		<%= f.text_field :username, placeholder: "ユーザー名を入力", class: 'input is-rounded' %>
+		  		<span class="icon is-small is-left">
+            <i class="fas fa-search"></i>
+          </span>
+		 		</div>
+			</div>
+    <% end %>
+  　<br>
+    <% @users.each do |user| %>
+      <div class="columns is-gapless mb-5 pb-5 is-mobile post-border">
+        <div class="column is-two-fifths photo">
+          <%= link_to user_path(user.id) do %>
+            <% if user.image? %>
+              <img class="ho" width="64" height="64" src="<%= user.image.url %>" >
+            <% else %>
+              <%= image_tag "/assets/default.jpg", size: '64x64', class: "ho" %>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="column ml-5">
+          <p class="is-size-5 has-text-weight-bold"><%= link_to user.username, user_path(user.id) %></p>
+          <%= link_to user_path(user.id) do %>
+            <p>プロフィールへ >></p>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+    <% if @users.empty? %>
+      <p class="is-size-5 has-text-centered">該当するユーザーがいません</p>
+    <% end %>
+  </div>
+</div>
