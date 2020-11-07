@@ -8,6 +8,10 @@
 
 ## デプロイ
 https://find-book-0605.herokuapp.com/
+以下の情報でログインお願いします。
+メールドレス：　「sample@sample」 
+パスワード：　「sample」
+ログイン後は、まず条件を何も指定せず検索してみてください。
 
 ## 使用言語・技術
 * HTML/CSS
