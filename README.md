@@ -7,10 +7,10 @@
 その他にも気が合うユーザーをフォローし、メッセージのやり取りなどSNSとしての側面もあります。
 
 ## デプロイ
-https://find-book-0605.herokuapp.com/
-以下の情報でログインお願いします。
-メールドレス：　「sample@sample」 
-パスワード：　「sample」
+https://find-book-0605.herokuapp.com/ <br>
+以下の情報でログインお願いします。 <br>
+メールドレス：　「sample@sample」 <br>
+パスワード：　「sample」<br>
 ログイン後は、まず条件を何も指定せず検索してみてください。
 
 ## 使用言語・技術
